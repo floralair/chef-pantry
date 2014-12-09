@@ -1,0 +1,55 @@
+{
+  "nodeGroups":[
+    {
+      "name": "Workstation",
+      "description": "This node installs the Kubernetes software and all Kubernetes commands are executed on it.",
+      "roles": [
+        "kubernetes_workstation"
+      ],
+      "groupType": "master",
+      "instanceNum": "[1,1,1]",
+      "instanceType": "[SMALL,MEDIUM,LARGE,EXTRA_LARGE]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[SHARED,LOCAL]",
+        "sizeGB": "[1,1,min]"
+      },
+      "haFlag": "on"
+    },
+    {
+      "name": "Master",
+      "description": "The Kubernetes master node",
+      "roles": [
+        "kubernetes_master"
+      ],
+      "groupType": "master",
+      "instanceNum": "[1,1,1]",
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[SHARED,LOCAL]",
+        "sizeGB": "[1,1,min]"
+      },
+      "haFlag": "on"
+    },
+    {
+      "name": "Minion",
+      "description": "The Kubernetes minion node",
+      "roles": [
+        "kubernetes_minion"
+      ],
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "groupType": "worker",
+      "instanceNum": "[3,1,max]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",	
+      "storage": {
+        "type": "[LOCAL,SHARED]",
+        "sizeGB": "[1,1,min]"
+      },
+      "haFlag": "off"
+    }
+  ]
+}
