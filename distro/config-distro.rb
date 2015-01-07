@@ -10,7 +10,7 @@ class ConfigDistro
   MANIFEST_PATH = "/opt/serengeti/www/distros/manifest"
 
   VENDORS_REPO = ["GENERIC", "MAPR", "PHD", "BIGTOP", "CDH"]
-  VENDORS_TARS = ["APACHE", "GPHD", "HDP"]
+  VENDORS_TARS = ["APACHE", "GPHD", "HDP", "KUBERNETES"]
   VENDORS = VENDORS_REPO + VENDORS_TARS
 
   attr_reader :options
@@ -282,6 +282,10 @@ class ConfigDistro
     case type
     when "tarball"
       roles = @options.roles
+      case @options.vendor
+      when "KUBERNETES"
+        roles ||= ["kubernetes_workstation", "kubernetes_master", "kubernetes_minion"]
+      end
       @distro["packages"][0] = {"tarball" => tarball, "roles" => roles}
       return
     when "hadoop"

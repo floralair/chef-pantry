@@ -1,0 +1,9 @@
+[
+  {
+    "vendor" : "Kubernetes",
+    "version" : "^(\\d)+(\\.\\w+)*",
+    "type" : "Basic Kubernetes Cluster",
+    "appManager" : "Default",
+    "path" : "Default/kubernetes/basic/spec.json"
+  }
+]
