@@ -9,7 +9,7 @@ class ConfigDistro
   DISTRO_ROOT_DIR = '/opt/serengeti/www/distros'
   MANIFEST_PATH = "/opt/serengeti/www/distros/manifest"
 
-  VENDORS_REPO = ["GENERIC", "MAPR", "PHD", "BIGTOP", "CDH"]
+  VENDORS_REPO = ["GENERIC", "MESOS", "MAPR", "PHD", "BIGTOP", "CDH"]
   VENDORS_TARS = ["APACHE", "GPHD", "HDP", "KUBERNETES"]
   VENDORS = VENDORS_REPO + VENDORS_TARS
 
@@ -213,6 +213,8 @@ class ConfigDistro
       else @options.version.to_f >= 0.4
         packages_for_yarn
       end
+    when "MESOS"
+      @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["mesos_master", "mesos_slave", "mesos_docker", "mesos_chronos", "mesos_marathon"]}]
     else
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => []}]
     end

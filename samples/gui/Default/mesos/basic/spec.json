@@ -1,0 +1,57 @@
+{
+  "nodeGroups":[
+    {
+      "name": "Zookeeper",
+      "roles": [
+        "zookeeper"
+      ],
+      "groupType": "zookeeper",
+      "instanceNum": "[3,3,3]",
+      "instanceType": "[SMALL]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,min]",
+      "storage": {
+        "type": "[SHARED,LOCAL]",
+        "sizeGB": "[2,2,min]"
+      },
+      "haFlag": "on"
+    },
+    {
+      "name": "Master",
+      "description": "The Mesos master node",
+      "roles": [
+        "mesos_master",
+        "mesos_chronos",
+        "mesos_marathon"
+      ],
+      "groupType": "master",
+      "instanceNum": "[2,1,2]",
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[SHARED,LOCAL]",
+        "sizeGB": "[1,1,min]"
+      },
+      "haFlag": "on"
+    },
+    {
+      "name": "Slave",
+      "description": "The Mesos slave node",
+      "roles": [
+        "mesos_slave",
+        "mesos_docker"
+      ],
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "groupType": "worker",
+      "instanceNum": "[3,1,max]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[SHARED,LOCAL]",
+        "sizeGB": "[1,1,min]"
+      },
+      "haFlag": "off"
+    }
+  ]
+}

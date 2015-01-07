@@ -5,5 +5,12 @@
     "type" : "Basic Kubernetes Cluster",
     "appManager" : "Default",
     "path" : "Default/kubernetes/basic/spec.json"
+  },
+  {
+    "vendor" : "Mesos",
+    "version" : "^(\\d)+(\\.\\w+)*",
+    "type" : "Basic Mesos Cluster",
+    "appManager" : "Default",
+    "path" : "Default/mesos/basic/spec.json"
   }
 ]
