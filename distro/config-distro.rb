@@ -199,6 +199,9 @@ class ConfigDistro
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["hadoop_namenode", "hadoop_datanode", "hadoop_jobtracker", "hadoop_tasktracker", "hadoop_resourcemanager", "hadoop_nodemanager", "hadoop_journalnode", "hadoop_client", "hive", "hive_server", "pig", "hbase_master", "hbase_regionserver", "hbase_client", "zookeeper"]}]
     when "MAPR"
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["mapr_zookeeper", "mapr_cldb", "mapr_jobtracker", "mapr_tasktracker", "mapr_fileserver", "mapr_nfs", "mapr_webserver", "mapr_metrics", "mapr_client", "mapr_pig", "mapr_hive", "mapr_hive_server", "mapr_mysql_server", "mapr_hbase_master", "mapr_hbase_regionserver", "mapr_hbase_client"]}]
+      if @options.version.to_f >= 4
+        @distro["packages"][0]["roles"] += ["mapr_resourcemanager", "mapr_historyserver", "mapr_nodemanager"]
+      end
     when "PHD"
       packages_for_yarn
     when "HDP"
@@ -214,7 +217,7 @@ class ConfigDistro
         packages_for_yarn
       end
     when "MESOS"
-      @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["mesos_master", "mesos_slave", "mesos_docker", "mesos_chronos", "mesos_marathon"]}]
+      @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["zookeeper", "mesos_master", "mesos_slave", "mesos_docker", "mesos_chronos", "mesos_marathon"]}]
     else
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => []}]
     end
