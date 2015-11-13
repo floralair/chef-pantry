@@ -9,7 +9,7 @@ class ConfigDistro
   DISTRO_ROOT_DIR = '/opt/serengeti/www/distros'
   MANIFEST_PATH = "/opt/serengeti/www/distros/manifest"
 
-  VENDORS_REPO = ["GENERIC", "MESOS", "MAPR", "PHD", "BIGTOP", "CDH"]
+  VENDORS_REPO = ["GENERIC", "MESOS", "MAPR", "PHD", "BIGTOP", "CDH", "DATASTAX"]
   VENDORS_TARS = ["APACHE", "GPHD", "HDP", "KUBERNETES"]
   VENDORS = VENDORS_REPO + VENDORS_TARS
 
@@ -218,6 +218,8 @@ class ConfigDistro
       end
     when "MESOS"
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["zookeeper", "mesos_master", "mesos_slave", "mesos_docker", "mesos_chronos", "mesos_marathon"]}]
+    when "DATASTAX"
+      @distro["packages"] = [{"package_repos" => @options.repos, "roles" => ["cassandra_seed", "cassandra_node"]}]
     else
       @distro["packages"] = [{"package_repos" => @options.repos, "roles" => []}]
     end
