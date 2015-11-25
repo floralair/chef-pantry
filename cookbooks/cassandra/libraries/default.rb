@@ -20,7 +20,7 @@ module Cassandra
     return if is_seed
 
     run_in_ruby_block __method__, in_ruby_block do
-      set_action(HadoopCluster::ACTION_WAIT_FOR_SERVICE, node[:cassandra][:seed_service_name])
+      set_action(HadoopCluster::ACTION_WAIT_FOR_SERVICE, "cassandra seed")
       seed_count = all_nodes_count({"role" => "cassandra_seed"})
       all_providers_for_service(node[:cassandra][:seed_service_name], true, seed_count)
       clear_action

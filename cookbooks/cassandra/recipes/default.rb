@@ -59,4 +59,6 @@ template '/etc/cassandra/default.conf/cassandra-env.sh' do
   action :create
 end
 
+set_java_home('/etc/default/cassandra')
+
 clear_bootstrap_action
