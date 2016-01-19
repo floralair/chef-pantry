@@ -1,0 +1,36 @@
+{
+  "nodeGroups":[
+    {
+      "name": "Seed",
+      "description": "The Cassandra seed node",
+      "roles": [
+        "cassandra_seed"
+      ],
+      "instanceNum": "[2,1,2]",
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[LOCAL,SHARED]",
+        "sizeGB": "[10,2,max]"
+      },
+      "haFlag": "off"
+    },
+    {
+      "name": "Worker",
+      "description": "The Cassandra worker node",
+      "roles": [
+        "cassandra_node"
+      ],
+      "instanceType": "[MEDIUM,SMALL,LARGE,EXTRA_LARGE]",
+      "instanceNum": "[3,1,max]",
+      "cpuNum": "[1,1,64]",
+      "memCapacityMB": "[7500,3748,max]",
+      "storage": {
+        "type": "[LOCAL,SHARED]",
+        "sizeGB": "[10,2,max]"
+      },
+      "haFlag": "off"
+    }
+  ]
+}

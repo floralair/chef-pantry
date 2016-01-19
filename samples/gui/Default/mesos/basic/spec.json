@@ -12,7 +12,7 @@
       "memCapacityMB": "[7500,3748,min]",
       "storage": {
         "type": "[SHARED,LOCAL]",
-        "sizeGB": "[2,2,min]"
+        "sizeGB": "[10,2,max]"
       },
       "haFlag": "on"
     },
@@ -31,7 +31,7 @@
       "memCapacityMB": "[7500,3748,max]",
       "storage": {
         "type": "[SHARED,LOCAL]",
-        "sizeGB": "[1,1,min]"
+        "sizeGB": "[10,2,max]"
       },
       "haFlag": "on"
     },
@@ -49,7 +49,7 @@
       "memCapacityMB": "[7500,3748,max]",
       "storage": {
         "type": "[SHARED,LOCAL]",
-        "sizeGB": "[1,1,min]"
+        "sizeGB": "[10,2,max]"
       },
       "haFlag": "off"
     }
